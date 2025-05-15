@@ -14,18 +14,6 @@ class PostController extends Controller
     {
         $post = Post::find(1);
         dd($post->category->title);
-        /* Post::create(
-            [
-                'title'=> 'test title',
-                'slug'=> 'test slug',
-                'content'=> 'test content',
-                'category_id'=> 1,
-                'description'=> 'test description',
-                'posted'=> 'no',
-                'image'=> 'test image',
-            ]
-        );
-        return 'index'; */
     }
 
     /**
@@ -42,7 +30,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        Post::create($request->all());
+
+        return to_route(('post.index'));
+        /* Post::create(
+            [
+                'title'=> $request->all()['title'],
+                'slug'=> $request->all()['slug'],
+                'content'=> $request->all()['content'],
+                'category_id'=> $request->all()['category_id'],
+                'description'=> $request->all()['description'],
+                'posted'=> $request->all()['posted'],
+                'image'=> $request->all()['image'],
+            ]
+        ); */
     }
 
     /**
