@@ -2,17 +2,22 @@
 
 @section('content')
 
+<a href="{{ route('post.create') }}" target="_blank">Create</a>
+
     <table>
         <thead>
-            <tr>
+            <td>
                 Title
-            </tr>
-            <tr>
+            </td>
+            <td>
                 Posted
-            </tr>
-            <tr>
+            </td>
+            <td>
                 Category
-            </tr>
+            </td>
+            <td>
+                Options
+            </td>
         </thead>
         <tbody>
             @foreach ($posts as $post)
@@ -20,19 +25,22 @@
                     <td>
                         {{ $post->title }}
                     </td>
-                </tr>
-                <tr>
                     <td>
                         {{ $post->posted }}
                     </td>
-                </tr>
-                <tr>
                     <td>
                         {{ $post->category->title }}
+                    </td>
+                    <td>
+                        <a href="{{ route('post.edit', $post) }}">Edit</a>
+                        <a href="{{ route('post.show', $post) }}">Show</a>
+                        <a href="{{ route('post.destroy', $post) }}">Delete</a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+
+    {{ $posts->links() }}
 
 @endsection()
