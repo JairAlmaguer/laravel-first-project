@@ -14,8 +14,8 @@ class PostController extends Controller
 
     public function index()
     {
-        $post = Post::find(1);
-        dd($post->category->title);
+        $posts = Post::get();
+        return view('dashboard.post.index', compact('posts'));
     }
 
     /**
