@@ -44,7 +44,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('dashboard.post.show', compact('post'));
     }
 
     /**
@@ -69,7 +69,7 @@ class PostController extends Controller
             $request->image->move(public_path('uploads/posts'),$filename);
         }
 
-        $post->update($request->validated());
+        $post->update($data);
         return to_route('post.index');
     }
 
